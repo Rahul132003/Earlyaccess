@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARC PEM — Get Early Access</title>
+  <meta name="description" content="Join the early access list for ARC PEM — India's all-in-one offline construction finance platform. BOQ, vendor bills, labour tracking, GST & Tally export in one place." />
+
+  <!-- Preconnect for faster font load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      color: #0f172a;
+      background: #f0f4ff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a  { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+    input  { font-family: inherit; }
+
+    /* ── Ambient background orbs ── */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(110px);
+    }
+    body::before {
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(99,102,241,0.13) 0%, transparent 65%);
+      top: -260px; left: -260px;
+      animation: orbA 22s ease-in-out infinite;
+    }
+    body::after {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 65%);
+      bottom: -220px; right: -220px;
+      animation: orbB 28s ease-in-out infinite;
+    }
+    @keyframes orbA {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(60px,-40px) scale(1.08); }
+      66%      { transform: translate(-40px,60px) scale(0.93); }
+    }
+    @keyframes orbB {
+      0%,100% { transform: translate(0,0) scale(1); }
+      40%      { transform: translate(-50px,35px) scale(1.06); }
+      70%      { transform: translate(35px,-50px) scale(0.95); }
+    }
+
+    /* ── Grid pattern ── */
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.055) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    /* ── All stacking above background ── */
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    nav {
+      display: flex; align-items: center; justify-content: center;
+      padding: 22px 40px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 9px;
+      font-weight: 800; font-size: 1.22rem; color: #0f172a;
+    }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, #4f46e5, #1d4ed8);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-mark svg { display: block; }
+    .logo span { color: #4f46e5; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    main {
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 52px 24px 80px;
+    }
+
+    /* Animated badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.09); color: #4f46e5;
+      border: 1px solid rgba(99,102,241,0.22); border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 6px 16px; margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.25);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { box-shadow: 0 0 0 3px rgba(99,102,241,0.25); }
+      50%      { box-shadow: 0 0 0 7px rgba(99,102,241,0.10); }
+    }
+
+    /* Headline */
+    h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 760px; margin: 0 auto 22px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+    .h1-grad {
+      background: linear-gradient(120deg, #4f46e5 0%, #0ea5e9 55%, #818cf8 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Sub-headline */
+    .sub {
+      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      color: #64748b; line-height: 1.85;
+      max-width: 540px; margin: 0 auto 44px;
+      animation: fadeUp 0.5s 0.16s ease both;
+    }
+
+    /* ── Form card ── */
+    .card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 20px; padding: 36px 40px;
+      max-width: 520px; width: 100%;
+      box-shadow: 0 8px 32px rgba(31,38,135,0.10), 0 2px 8px rgba(0,0,0,0.04);
+      animation: fadeUp 0.5s 0.24s ease both;
+    }
+
+    .field-label {
+      display: block; text-align: left;
+      font-size: 0.8rem; font-weight: 600; color: #475569;
+      margin-bottom: 12px; letter-spacing: 0.01em;
+    }
+
+    .field-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+
+    /* Honeypot — hidden from real users */
+    .hp-field {
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      tab-index: -1 !important;
+    }
+
+    /* Email input */
+    .email-input {
+      flex: 1; min-width: 0;
+      padding: 13px 18px;
+      border: 1.5px solid #e2e8f0; border-radius: 10px;
+      font-size: 0.92rem; color: #0f172a;
+      background: white; outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+    .email-input::placeholder { color: #94a3b8; }
+    .email-input:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.14);
+    }
+    .email-input.invalid { border-color: #ef4444; }
+    .email-input.invalid:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.14); }
+
+    /* CTA button */
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 26px; border-radius: 10px; border: none;
+      font-size: 0.92rem; font-weight: 700; color: white;
+      background: #4f46e5;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+      transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+      white-space: nowrap;
+    }
+    .cta-btn:hover:not([disabled]) {
+      background: #4338ca; transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79,70,229,0.45);
+    }
+    .cta-btn:active:not([disabled]) { transform: translateY(0); }
+    .cta-btn[disabled] { opacity: 0.7; cursor: not-allowed; }
+
+    /* Spinner */
+    .spinner {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: white;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Error message */
+    .error-msg {
+      display: none; align-items: center; gap: 7px;
+      margin-top: 10px; font-size: 0.82rem; color: #dc2626; text-align: left;
+    }
+    .error-msg.visible { display: flex; }
+
+    /* ── Trust strip ── */
+    .trust-strip {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+      margin-top: 20px; padding-top: 20px;
+      border-top: 1px solid rgba(226,232,240,0.8);
+      font-size: 0.78rem; color: #94a3b8;
+    }
+    .trust-dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: #cbd5e1; display: inline-block;
+    }
+    .trust-strip strong { color: #475569; font-weight: 600; }
+
+    /* ── Success state (hidden initially) ── */
+    .success-state {
+      display: none; text-align: center; padding: 6px 0;
+    }
+    .success-state.visible { display: block; animation: fadeUp 0.4s ease both; }
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin: 0 auto 18px; color: white;
+      box-shadow: 0 8px 24px rgba(16,185,129,0.3);
+      animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+    @keyframes bounceIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .success-title { font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .success-sub   { font-size: 0.875rem; color: #64748b; line-height: 1.75; }
+    .success-sub strong { color: #0f172a; }
+
+    /* ── Social proof row ── */
+    .proof-row {
+      display: flex; gap: 20px; justify-content: center;
+      flex-wrap: wrap; margin-top: 40px;
+      animation: fadeUp 0.5s 0.36s ease both;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: #64748b;
+    }
+    .proof-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(226,232,240,0.8);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      padding: 22px 40px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+      font-size: 0.78rem; color: #94a3b8;
+      border-top: 1px solid rgba(226,232,240,0.6);
+    }
+    footer a { color: #64748b; text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s; }
+    footer a:hover { color: #4f46e5; }
+
+    /* ── Utility animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 600px) {
+      nav    { padding: 18px 20px; }
+      main   { padding: 40px 20px 60px; }
+      .card  { padding: 26px 20px; }
+      .field-row { flex-direction: column; }
+      .cta-btn   { width: 100%; }
+      footer { padding: 20px; gap: 6px; }
+      .proof-row { gap: 12px; }
+    }
+    @media (max-width: 400px) {
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Subtle grid background -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────── -->
+  <nav aria-label="Site navigation">
+    <a href="/" class="logo" aria-label="ARC PEM home">
+      <div class="logo-mark" aria-hidden="true">
+        <!-- ARC PEM logo mark (inline SVG) -->
+        <svg width="22" height="22" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <path d="M11 34 L11 21 Q11 8 22 8 Q33 8 33 21 L33 34"
+                stroke="white" stroke-width="5" fill="none"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="7" y1="34" x2="37" y2="34"
+                stroke="white" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      ARC <span>PEM</span>
+    </a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <main>
+
+    <!-- Animated live badge -->
+    <div class="badge" role="note">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Early Access &mdash; Limited Spots Available
+    </div>
+
+    <!-- Headline -->
+    <h1>
+      Take Control of Your<br />
+      <span class="h1-grad">Construction Finances</span>
+    </h1>
+
+    <!-- Sub-headline -->
+    <p class="sub">
+      ARC PEM is India&rsquo;s all-in-one <strong>offline</strong> platform for architects and
+      builders &mdash; BOQ, vendor bills, labour tracking, GST, and Tally export, unified.
+      Join the waitlist and be first in line when we launch.
+    </p>
+
+    <!-- ── Form card ── -->
+    <div class="card">
+
+      <!-- Success state (shown after submit) -->
+      <div class="success-state" id="successState" role="status" aria-live="polite">
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <div class="success-title">You&rsquo;re on the list!</div>
+        <p class="success-sub">
+          We&rsquo;ll send your early access invite to
+          <strong id="confirmedEmail"></strong>.<br/>
+          Expect to hear from us within 24&nbsp;hours.
+        </p>
+      </div>
+
+      <!-- Form (hidden after submit) -->
+      <form
+        id="earlyAccessForm"
+        method="POST"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        novalidate
+        aria-label="Early access sign-up form"
+      >
+        <!--
+          HONEYPOT FIELD — hidden from real users.
+          Bots auto-fill every field; if this field is non-empty we abort.
+          The CSS class .hp-field positions it off-screen.
+        -->
+        <input
+          class="hp-field"
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+
+        <label class="field-label" for="emailInput">
+          Enter your work email to request early access
+        </label>
+
+        <div class="field-row">
+          <input
+            id="emailInput"
+            class="email-input"
+            type="email"
+            name="email"
+            placeholder="you@company.com"
+            autocomplete="email"
+            inputmode="email"
+            required
+            aria-required="true"
+            aria-describedby="errorMsg"
+          />
+          <button class="cta-btn" type="submit" id="submitBtn" aria-label="Get early access">
+            Get Early Access
+          </button>
+        </div>
+
+        <p class="error-msg" id="errorMsg" role="alert" aria-live="assertive">
+          <span aria-hidden="true">&#9888;</span>
+          <span id="errorText"></span>
+        </p>
+
+        <div class="trust-strip" aria-label="Privacy and security notes">
+          <span>&#128274;</span>
+          <strong>No spam, ever.</strong>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>We respect your privacy.</span>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>Unsubscribe any time.</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- Social proof row -->
+    <div class="proof-row" aria-label="Key benefits">
+      <div class="proof-item">
+        <span class="proof-icon" aria-hidden="true">&#127959;</span>
+        <span>30+ firms already on board</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-icon" aria-hidden="true">&#9889;</span>
+        <span>Set up in under 15 minutes</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-icon" aria-hidden="true">&#128274;</span>
+        <span>100% offline &mdash; your data stays local</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────── -->
+  <footer>
+    <span>&copy; <span id="year"></span> HashX Labs Pvt. Ltd.</span>
+    <span class="trust-dot" aria-hidden="true"></span>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <span class="trust-dot" aria-hidden="true"></span>
+    <a href="/terms">Terms of Service</a>
+    <span class="trust-dot" aria-hidden="true"></span>
+    <a href="mailto:support@arcpem.app">Contact</a>
+  </footer>
+
+  <script>
+    // ── Year in footer ────────────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Refs ──────────────────────────────────────────────────────────
+    const form         = document.getElementById('earlyAccessForm');
+    const emailInput   = document.getElementById('emailInput');
+    const submitBtn    = document.getElementById('submitBtn');
+    const errorMsg     = document.getElementById('errorMsg');
+    const errorText    = document.getElementById('errorText');
+    const successState = document.getElementById('successState');
+    const confirmedEmail = document.getElementById('confirmedEmail');
+    const honeypot     = form.querySelector('[name="_gotcha"]');
+
+    // ── Helpers ───────────────────────────────────────────────────────
+
+    /**
+     * Sanitize input: strip HTML tags and dangerous chars to prevent XSS
+     * (React handles this in JSX; we do it manually here for vanilla HTML)
+     */
+    function sanitize(str) {
+      return str
+        .replace(/<[^>]*>/g, '')       // strip HTML tags
+        .replace(/[<>"'&]/g, '')       // strip remaining dangerous chars
+        .trim();
+    }
+
+    function isValidEmail(email) {
+      // RFC-compliant-enough check: local@domain.tld
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function showError(msg) {
+      errorText.textContent = msg;
+      errorMsg.classList.add('visible');
+      emailInput.classList.add('invalid');
+      emailInput.setAttribute('aria-invalid', 'true');
+    }
+
+    function clearError() {
+      errorMsg.classList.remove('visible');
+      emailInput.classList.remove('invalid');
+      emailInput.setAttribute('aria-invalid', 'false');
+    }
+
+    function setLoading(on) {
+      submitBtn.disabled = on;
+      submitBtn.innerHTML = on
+        ? '<span class="spinner" aria-hidden="true"></span> Sending&hellip;'
+        : 'Get Early Access';
+    }
+
+    function showSuccess(email) {
+      confirmedEmail.textContent = email;
+      form.style.display = 'none';
+      successState.classList.add('visible');
+    }
+
+    // ── Live validation (clear error once user corrects input) ────────
+    emailInput.addEventListener('input', clearError);
+
+    // ── Form submit ───────────────────────────────────────────────────
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Honeypot check — bots fill this; real users leave it empty
+      if (honeypot && honeypot.value) return;
+
+      const raw   = emailInput.value;
+      const clean = sanitize(raw);
+
+      if (!clean) {
+        showError('Please enter your email address.');
+        emailInput.focus();
+        return;
+      }
+      if (!isValidEmail(clean)) {
+        showError('Please enter a valid email address (e.g. you@company.com).');
+        emailInput.focus();
+        return;
+      }
+
+      clearError();
+      setLoading(true);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          // Only send the sanitized email — never send raw user input
+          body: JSON.stringify({ email: clean }),
+        });
+
+        if (res.ok) {
+          showSuccess(clean);
+        } else {
+          showError('Something went wrong. Please try again shortly.');
+          setLoading(false);
+        }
+      } catch (_) {
+        showError('Network error. Please check your connection and try again.');
+        setLoading(false);
+      }
+    });
+  </script>
+
+</body>
+</html>

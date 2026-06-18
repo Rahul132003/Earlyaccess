@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model EarlyAccessEntry {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+
+  // Plan interest
+  plan      String   // Solo | Studio | Enterprise
+
+  // Contact
+  name      String
+  email     String   @unique
+  phone     String?  // WhatsApp number
+
+  // Company profile
+  company   String?
+  role      String?
+  teamSize  String?
+  city      String?
+
+  // Request metadata
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+}
+
