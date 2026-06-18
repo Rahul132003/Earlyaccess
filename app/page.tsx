@@ -20,9 +20,9 @@ interface FormFields {
 const YEAR = new Date().getFullYear()
 
 const PLANS: { id: Plan; price: string; sub: string; popular?: true }[] = [
-  { id: 'Solo',       price: '₹4,999/mo', sub: '1 user · Up to 10 projects'   },
-  { id: 'Studio',     price: '₹9,999/mo', sub: '5 users · Unlimited projects', popular: true },
-  { id: 'Enterprise', price: 'Custom',    sub: 'Unlimited · Custom onboarding' },
+  { id: 'Solo',       price: '₹2,499/mo', sub: '1 user · Up to 10 projects' },
+  { id: 'Studio',     price: '₹4,999/mo', sub: '5 users · Up to 30 projects', popular: true },
+  { id: 'Enterprise', price: '₹9,999/mo',    sub: '10 users · 50+ projects' },
 ]
 
 const ROLES = [
@@ -109,9 +109,11 @@ function SuccessCard({ name, email, plan }: { name: string; email: string; plan:
         <div className="success-icon" aria-hidden="true">✓</div>
         <div className="success-title">You&rsquo;re on the list, {name.split(' ')[0]}!</div>
         <p className="success-sub">
+          Thank you for your interest in ARC PEM!
           Your <strong>{plan}</strong> early access request has been received.<br />
-          We&rsquo;ll reach out to <strong>{email}</strong> within 24&nbsp;hours.
+          We&rsquo;ll reach out to <strong>{email}</strong> within 2&nbsp;working days.
         </p>
+        
       </div>
     </div>
   )
